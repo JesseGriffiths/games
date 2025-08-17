@@ -136,7 +136,7 @@ function collision()
 		score = score + 1
 		sfx(0)
 	end
-	if head_x < 8 then
+	if head_x < 0 then
 		alive = false
 		death_message = potential_death_message
 		sfx(1)
