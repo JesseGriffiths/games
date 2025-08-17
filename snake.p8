@@ -53,8 +53,7 @@ function input_handling()
 		end
 		direction = ➡️
 		head_sprite = 34
-	end
-	if btn(⬅️) and direction != ➡️ then
+	elseif btn(⬅️) and direction != ➡️ then
 		if direction == ⬆️ then
 			player_body[count(player_body)].bsprite = 6
 			player_body[count(player_body)].tsprite = 52
@@ -65,8 +64,7 @@ function input_handling()
 		end
 		direction = ⬅️
 		head_sprite = 50
-	end
-	if btn(⬆️) and direction != ⬇️ then
+	elseif btn(⬆️) and direction != ⬇️ then
 		if direction == ⬅️ then
 			player_body[count(player_body)].bsprite = 21
 			player_body[count(player_body)].tsprite = 20
@@ -77,8 +75,7 @@ function input_handling()
 		end
 		direction = ⬆️
 		head_sprite = 18
-	end
-	if btn(⬇️) and direction != ⬆️ then
+	elseif btn(⬇️) and direction != ⬆️ then
 		if direction == ⬅️ then
 			player_body[count(player_body)].bsprite = 5
 			player_body[count(player_body)].tsprite = 4
@@ -171,6 +168,7 @@ end
 
 function get_random_food_pos()
 	searching = true
+	tries = 0
 	while searching do
 		coll_count = 0
 		x_food = flr(rnd(14) + 1) * 8
@@ -181,6 +179,10 @@ function get_random_food_pos()
 			end
 		end
 		if coll_count == 0 then
+			searching = false
+		end
+		tries = tries + 1
+		if tries > 256 then
 			searching = false
 		end
 	end
